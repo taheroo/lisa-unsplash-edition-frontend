@@ -3,6 +3,9 @@ import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
+import ImageListItemBar from '@mui/material/ImageListItemBar';
+import IconButton from '@mui/material/IconButton';
+import Button from '@mui/material/Button';
 
 function MasonryImageList() {
 	const theme = useTheme();
@@ -15,12 +18,45 @@ function MasonryImageList() {
 			<Box sx={{ overflowY: 'scroll' }}>
 				<ImageList variant='masonry' cols={3} gap={45}>
 					{itemData.map((item) => (
-						<ImageListItem key={item.img}>
+						<ImageListItem key={item.img} style={{ cursor: 'pointer' }}>
 							<img
 								src={`${item.img}`}
 								srcSet={`${item.img}`}
 								alt={item.title}
 								loading='lazy'
+							/>
+							<ImageListItemBar
+								sx={{ background: 'transparent' }}
+								position='top'
+								actionIcon={
+									<IconButton
+										sx={{ color: 'rgba(255, 255, 255, 0.54)' }}
+										aria-label={`delete ${item.title}`}
+									>
+										<Button
+											variant='outlined'
+											style={{
+												textTransform: 'none',
+												color: '#EB5757',
+												borderColor: '#EB5757',
+												borderRadius: 38,
+											}}
+										>
+											delete
+										</Button>
+									</IconButton>
+								}
+							/>
+							<ImageListItemBar
+								sx={{
+									background: 'transparent',
+									fontFamily: 'Montserrat',
+									fontSize: 18,
+									fontWeight: 700,
+									lineHeight: 22,
+								}}
+								position='bottom'
+								title={item.title}
 							/>
 						</ImageListItem>
 					))}
