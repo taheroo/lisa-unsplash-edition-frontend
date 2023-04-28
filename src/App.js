@@ -4,7 +4,7 @@ import Grid from '@mui/material/Grid';
 import AppLogo from './components/AppLogo/AppLogo.js';
 import Search from './components/Search/Search.js';
 import MasonryImageList from './components/MasonryImageList/MasonryImageList.js';
-import AddPhotoButton from './components/AddPhotoButton/AddPhotoButton.js';
+import FormDialog from './components/FormDialog/FormDialog.js';
 
 export default function BasicGrid() {
 	return (
@@ -22,7 +22,7 @@ export default function BasicGrid() {
 						<Search />
 					</Grid>
 					<Grid item xs={12} md={1}>
-						<AddPhotoButton />
+						<FormDialog />
 					</Grid>
 				</Grid>
 				<Grid item xs={12}>

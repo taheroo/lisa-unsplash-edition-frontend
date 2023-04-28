@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTheme, Button } from '@mui/material';
 
-function AddPhotoButton() {
+function AddPhotoButton({ onClick }) {
 	const theme = useTheme();
 	return (
 		<div
@@ -12,6 +12,7 @@ function AddPhotoButton() {
 			}}
 		>
 			<Button
+				onClick={onClick}
 				variant='contained'
 				style={{
 					textTransform: 'none',
