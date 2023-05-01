@@ -1,0 +1,17 @@
+describe('CRUD', () => {
+  it('Add Image', () => {
+    cy.visit('localhost:3000')
+    cy.get('[data-testid="imageItem"]')
+    .should('have.length', 11)
+    cy.get('[data-testid="addPhotoButton"]')
+    .click()
+    cy.get('[data-testid="labelTextField"]')
+    .type('Test')
+    cy.get('[data-testid="photoUrlTextField"]')
+    .type('Test')
+    cy.get('[data-testid="submitFormDialog"]')
+    .click()
+    cy.get('[data-testid="imageItem"]')
+    .should('have.length', 12)
+  })
+})
