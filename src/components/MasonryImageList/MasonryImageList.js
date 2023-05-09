@@ -8,13 +8,15 @@ import IconButton from '@mui/material/IconButton';
 import Button from '@mui/material/Button';
 import ImagesContext from '../../context/imagesContext.js';
 import DeleteFormDialog from '../DeleteFormDialog/DeleteFormDialog.js';
-import axios from 'axios';
 
 function MasonryImageList() {
 	const theme = useTheme();
 	const { images, setImages } = useContext(ImagesContext);
 	const [open, setOpen] = useState(false);
 	const [selectedImageIndex, setSelectedImageIndex] = useState(-1);
+	useEffect(() => {
+		setImages(itemData);
+	}, []);
 	const handleClickOpen = (index) => {
 		setSelectedImageIndex(index);
 		setOpen(true);
@@ -22,14 +24,6 @@ function MasonryImageList() {
 	const handleClose = () => {
 		setOpen(false);
 	};
-
-	useEffect(() => {
-		axios.get('http://localhost:3001/images').then((response) => {
-			setImages(response.data);
-		});
-	}, [setImages]);
-
-	if (!images) return null;
 
 	return (
 		<div
@@ -48,13 +42,13 @@ function MasonryImageList() {
 						images.map((item, index) => (
 							<ImageListItem
 								data-testid='imageItem'
-								key={item._id}
+								key={item.img}
 								style={{ cursor: 'pointer' }}
 							>
 								<img
-									src={`${item.url}`}
-									srcSet={`${item.url}`}
-									alt={item.label}
+									src={`${item.img}`}
+									srcSet={`${item.img}`}
+									alt={item.title}
 									loading='lazy'
 								/>
 								<ImageListItemBar
@@ -63,7 +57,7 @@ function MasonryImageList() {
 									actionIcon={
 										<IconButton
 											sx={{ color: 'rgba(255, 255, 255, 0.54)' }}
-											aria-label={`delete ${item.label}`}
+											aria-label={`delete ${item.title}`}
 										>
 											<Button
 												variant='outlined'
@@ -99,51 +93,51 @@ function MasonryImageList() {
 	);
 }
 
-// const itemData = [
-// 	{
-// 		img: 'https://images.unsplash.com/photo-1549388604-817d15aa0110',
-// 		title: 'Bed',
-// 	},
-// 	{
-// 		img: 'https://images.unsplash.com/photo-1525097487452-6278ff080c31',
-// 		title: 'Books',
-// 	},
-// 	{
-// 		img: 'https://images.unsplash.com/photo-1523413651479-597eb2da0ad6',
-// 		title: 'Sink',
-// 	},
-// 	{
-// 		img: 'https://images.unsplash.com/photo-1563298723-dcfebaa392e3',
-// 		title: 'Kitchen',
-// 	},
-// 	{
-// 		img: 'https://images.unsplash.com/photo-1588436706487-9d55d73a39e3',
-// 		title: 'Blinds',
-// 	},
-// 	{
-// 		img: 'https://images.unsplash.com/photo-1574180045827-681f8a1a9622',
-// 		title: 'Chairs',
-// 	},
-// 	{
-// 		img: 'https://images.unsplash.com/photo-1530731141654-5993c3016c77',
-// 		title: 'Laptop',
-// 	},
-// 	{
-// 		img: 'https://images.unsplash.com/photo-1481277542470-605612bd2d61',
-// 		title: 'Doors',
-// 	},
-// 	{
-// 		img: 'https://images.unsplash.com/photo-1517487881594-2787fef5ebf7',
-// 		title: 'Coffee',
-// 	},
-// 	{
-// 		img: 'https://images.unsplash.com/photo-1516455207990-7a41ce80f7ee',
-// 		title: 'Storage',
-// 	},
-// 	{
-// 		img: 'https://images.unsplash.com/photo-1597262975002-c5c3b14bbd62',
-// 		title: 'Candle',
-// 	},
-// ];
+const itemData = [
+	{
+		img: 'https://images.unsplash.com/photo-1549388604-817d15aa0110',
+		title: 'Bed',
+	},
+	{
+		img: 'https://images.unsplash.com/photo-1525097487452-6278ff080c31',
+		title: 'Books',
+	},
+	{
+		img: 'https://images.unsplash.com/photo-1523413651479-597eb2da0ad6',
+		title: 'Sink',
+	},
+	{
+		img: 'https://images.unsplash.com/photo-1563298723-dcfebaa392e3',
+		title: 'Kitchen',
+	},
+	{
+		img: 'https://images.unsplash.com/photo-1588436706487-9d55d73a39e3',
+		title: 'Blinds',
+	},
+	{
+		img: 'https://images.unsplash.com/photo-1574180045827-681f8a1a9622',
+		title: 'Chairs',
+	},
+	{
+		img: 'https://images.unsplash.com/photo-1530731141654-5993c3016c77',
+		title: 'Laptop',
+	},
+	{
+		img: 'https://images.unsplash.com/photo-1481277542470-605612bd2d61',
+		title: 'Doors',
+	},
+	{
+		img: 'https://images.unsplash.com/photo-1517487881594-2787fef5ebf7',
+		title: 'Coffee',
+	},
+	{
+		img: 'https://images.unsplash.com/photo-1516455207990-7a41ce80f7ee',
+		title: 'Storage',
+	},
+	{
+		img: 'https://images.unsplash.com/photo-1597262975002-c5c3b14bbd62',
+		title: 'Candle',
+	},
+];
 
 export default MasonryImageList;
