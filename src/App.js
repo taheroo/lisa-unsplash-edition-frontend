@@ -5,7 +5,7 @@ import { ImagesContextProvider } from './context/imagesContext.js';
 import AppLogo from './components/AppLogo';
 import Search from './components/Search/Search.js';
 import MasonryImageList from './components/MasonryImageList/MasonryImageList.js';
-import FormDialog from './components/FormDialog/FormDialog.js';
+import FormDialog from './components/FormDialog';
 
 export default function App() {
 	return (
