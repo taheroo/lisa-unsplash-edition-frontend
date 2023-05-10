@@ -68,19 +68,22 @@ function MasonryImageList() {
 										<IconButton
 											sx={{ color: 'rgba(255, 255, 255, 0.54)' }}
 											aria-label={`delete ${item.title}`}
+											onClick={() => handleClickOpen(index)}
+											style={{
+												textTransform: 'none',
+												color: '#EB5757',
+												borderRadius: 38,
+												border: '1px solid #EB5757',
+												marginTop: 18,
+												marginRight: 18,
+												fontSize: 10,
+												fontWeight: 500,
+												fontFamily: 'Montserrat',
+											}}
 										>
-											<Button
-												variant='outlined'
-												style={{
-													textTransform: 'none',
-													color: '#EB5757',
-													borderColor: '#EB5757',
-													borderRadius: 38,
-												}}
-												onClick={() => handleClickOpen(index)}
-											>
+											<span style={{ paddingLeft: 10, paddingRight: 10 }}>
 												delete
-											</Button>
+											</span>
 										</IconButton>
 									}
 								/>
