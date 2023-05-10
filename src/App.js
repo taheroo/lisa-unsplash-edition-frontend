@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { ImagesContextProvider } from './context/imagesContext.js';
 import AppLogo from './components/AppLogo';
-import Search from './components/Search/Search.js';
+import Search from './components/Search';
 import MasonryImageList from './components/MasonryImageList';
 import FormDialog from './components/FormDialog';
 
