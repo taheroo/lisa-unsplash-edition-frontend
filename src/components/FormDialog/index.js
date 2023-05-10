@@ -6,8 +6,9 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import { InputLabel } from '@mui/material';
-import AddPhotoButton from '../AddPhotoButton/AddPhotoButton';
-import ImagesContext from '../../context/imagesContext.js';
+import AddPhotoButton from '../AddPhotoButton';
+import { ImagesContext } from '../../context/imagesContext.js';
+import { styles } from './styles.js';
 
 export default function FormDialog() {
 	const [open, setOpen] = useState(false);
@@ -43,17 +44,14 @@ export default function FormDialog() {
 					borderRadius: 12,
 				}}
 				PaperProps={{
-					style: {
-						borderRadius: 12,
-						width: 620, // set the width of the dialog
-						height: 370, // set the height of the dialog
-						overflow: 'hidden', // optional: to hide the overflow
-					},
+					style: styles.dialogPaperStyle,
 				}}
 			>
-				<DialogTitle style={{ color: '#333333' }}>Add a new photo</DialogTitle>
+				<DialogTitle style={styles.dialogTitleStyle}>
+					Add a new photo
+				</DialogTitle>
 				<DialogContent>
-					<InputLabel style={{ color: '#4F4F4F' }}>Label</InputLabel>
+					<InputLabel style={styles.inputLabelStyle}>Label</InputLabel>
 					<TextField
 						onChange={(event) => setTitle(event.target.value)}
 						data-testid='labelTextField'
@@ -67,13 +65,7 @@ export default function FormDialog() {
 						InputProps={{
 							disableUnderline: true,
 						}}
-						style={{
-							boxSizing: 'border-box',
-							border: '1px solid #4F4F4F',
-							filter: 'drop-shadow(0px 1px 6px rgba(0, 0, 0, 0.1))',
-							borderRadius: '12px',
-							padding: 18,
-						}}
+						style={styles.textFieldStyle}
 					/>
 					<InputLabel style={{ color: '#4F4F4F', paddingTop: 18 }}>
 						Photo URL
@@ -91,46 +83,17 @@ export default function FormDialog() {
 						InputProps={{
 							disableUnderline: true,
 						}}
-						style={{
-							boxSizing: 'border-box',
-							border: '1px solid #4F4F4F',
-							filter: 'drop-shadow(0px 1px 6px rgba(0, 0, 0, 0.1))',
-							borderRadius: '12px',
-							padding: 18,
-						}}
+						style={styles.textFieldStyle}
 					/>
 				</DialogContent>
 				<DialogActions>
-					<Button
-						onClick={handleClose}
-						style={{
-							textTransform: 'none',
-							color: '#BDBDBD',
-							fontFamily: 'Noto Sans',
-							fontWeight: 500,
-							fontSize: 16,
-							fontStyle: 'normal',
-							height: 55,
-							width: 105,
-						}}
-					>
+					<Button onClick={handleClose} style={styles.cancelButtonStyle}>
 						Cancel
 					</Button>
 					<Button
 						data-testid='submitFormDialog'
 						onClick={handleSubmit}
-						style={{
-							textTransform: 'none',
-							backgroundColor: '#3DB46D',
-							fontFamily: 'Noto Sans',
-							fontStyle: 'normal',
-							color: '#FFFFFF',
-							fontWeight: 700,
-							fontSize: 16,
-							borderRadius: 12,
-							height: 55,
-							width: 105,
-						}}
+						style={styles.submitButtonStyle}
 					>
 						Submit
 					</Button>

@@ -1,20 +1,32 @@
 describe('Test Create/Read/Delete Images', () => {
-	it('Create Image', () => {
+	let initialImageCount;
+	beforeEach(() => {
 		cy.visit('localhost:3000');
-		cy.get('[data-testid="imageItem"]').should('have.length', 11);
+		cy.getImages().then((images) => {
+			initialImageCount = images.length;
+		});
+	});
+
+	it('should create an image', () => {
+		cy.getImages().should('have.length', initialImageCount);
 		cy.get('[data-testid="addPhotoButton"]').click();
 		cy.get('[data-testid="labelTextField"]').type('Candle');
 		cy.get('[data-testid="photoUrlTextField"]').type(
 			'https://images.unsplash.com/photo-1597262975002-c5c3b14bbd62'
 		);
 		cy.get('[data-testid="submitFormDialog"]').click();
-		cy.get('[data-testid="imageItem"]').should('have.length', 12);
+		cy.getImages().should('have.length', initialImageCount + 1);
 	});
-	it('Delete Image', () => {
-		cy.visit('localhost:3000');
-		cy.get('[data-testid="imageItem"]').should('have.length', 11);
+
+	it('should delete an image', () => {
+		cy.getImages().should('have.length', initialImageCount);
 		cy.get('[data-testid="deletePhotoButton#2"]').click();
 		cy.get('[data-testid="submitDeleteFormDialog"]').click();
-		cy.get('[data-testid="imageItem"]').should('have.length', 10);
+		cy.getImages().should('have.length', initialImageCount - 1);
+	});
+
+	it('should search images', () => {
+		cy.get('[data-testid="searchInput"]').type('kitchen');
+		cy.getImages().should('have.length', 1);
 	});
 });

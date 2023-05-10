@@ -5,8 +5,9 @@ import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
 import IconButton from '@mui/material/IconButton';
-import ImagesContext from '../../context/imagesContext.js';
-import DeleteFormDialog from '../DeleteFormDialog/DeleteFormDialog.js';
+import { ImagesContext } from '../../context/imagesContext.js';
+import DeleteFormDialog from '../DeleteFormDialog';
+import { styles } from './styles.js';
 
 function MasonryImageList() {
 	const theme = useTheme();
@@ -35,11 +36,7 @@ function MasonryImageList() {
 	};
 
 	return (
-		<div
-			style={{
-				backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-			}}
-		>
+		<div style={styles(theme).masonryContainerStyle}>
 			<DeleteFormDialog
 				open={open}
 				handleClose={handleClose}
@@ -69,17 +66,7 @@ function MasonryImageList() {
 											sx={{ color: 'rgba(255, 255, 255, 0.54)' }}
 											aria-label={`delete ${item.title}`}
 											onClick={() => handleClickOpen(index)}
-											style={{
-												textTransform: 'none',
-												color: '#EB5757',
-												borderRadius: 38,
-												border: '1px solid #EB5757',
-												marginTop: 18,
-												marginRight: 18,
-												fontSize: 10,
-												fontWeight: 500,
-												fontFamily: 'Montserrat',
-											}}
+											style={styles(theme).deleteButtonStyle}
 										>
 											<span style={{ paddingLeft: 10, paddingRight: 10 }}>
 												delete
@@ -88,13 +75,7 @@ function MasonryImageList() {
 									}
 								/>
 								<ImageListItemBar
-									sx={{
-										background: 'transparent',
-										fontFamily: 'Montserrat',
-										fontSize: 18,
-										fontWeight: 700,
-										lineHeight: 22,
-									}}
+									sx={styles(theme).imageItemBarStyle}
 									position='bottom'
 									title={item.title}
 								/>
