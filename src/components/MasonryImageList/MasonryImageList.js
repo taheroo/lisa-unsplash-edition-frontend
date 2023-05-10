@@ -19,11 +19,12 @@ function MasonryImageList() {
 			setImages(itemData);
 		} else {
 			setImages(
-				itemData.filter((image) =>
+				images.filter((image) =>
 					image.title.toLowerCase().includes(searchImageText.toLowerCase())
 				)
 			);
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [searchImageText]);
 
 	const handleClickOpen = (index) => {
