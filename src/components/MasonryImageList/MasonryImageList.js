@@ -11,12 +11,21 @@ import DeleteFormDialog from '../DeleteFormDialog/DeleteFormDialog.js';
 
 function MasonryImageList() {
 	const theme = useTheme();
-	const { images, setImages } = useContext(ImagesContext);
+	const { images, setImages, searchImageText } = useContext(ImagesContext);
 	const [open, setOpen] = useState(false);
 	const [selectedImageIndex, setSelectedImageIndex] = useState(-1);
 	useEffect(() => {
-		setImages(itemData);
-	}, []);
+		if (!searchImageText.trim()) {
+			setImages(itemData);
+		} else {
+			setImages(
+				itemData.filter((image) =>
+					image.title.toLowerCase().includes(searchImageText.toLowerCase())
+				)
+			);
+		}
+	}, [searchImageText]);
+
 	const handleClickOpen = (index) => {
 		setSelectedImageIndex(index);
 		setOpen(true);
