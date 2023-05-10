@@ -13,7 +13,7 @@ npm start
 
 ## Preview
 
-![Preview](https://github.com/taheroo/lisa-unsplash-edition-frontend/blob/update-doc/public/unsplash.jpg)
+![Preview](https://github.com/taheroo/lisa-unsplash-edition-frontend/blob/main/public/unsplash.jpg)
 
 ### Want to help
 
