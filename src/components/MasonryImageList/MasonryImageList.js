@@ -5,7 +5,7 @@ import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
 import IconButton from '@mui/material/IconButton';
-import ImagesContext from '../../context/imagesContext.js';
+import { ImagesContext } from '../../context/imagesContext.js';
 import DeleteFormDialog from '../DeleteFormDialog/DeleteFormDialog.js';
 
 function MasonryImageList() {

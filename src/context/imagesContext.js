@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { createContext, useState } from 'react';
 
-const ImagesContext = React.createContext({
-	images: [],
-	setImages: () => {},
-	searchImageText: '',
-	setSearchImageText: () => {},
-});
-ImagesContext.displayName = 'ImagesContext';
+const ImagesContext = createContext();
 
-export default ImagesContext;
+function ImagesContextProvider({ children }) {
+	const [images, setImages] = useState([]);
+	const [searchImageText, setSearchImageText] = useState('');
+	const value = { images, setImages, searchImageText, setSearchImageText };
+
+	return (
+		<ImagesContext.Provider value={value}>{children}</ImagesContext.Provider>
+	);
+}
+
+export { ImagesContext, ImagesContextProvider };

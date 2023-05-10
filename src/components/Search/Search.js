@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { styled, useTheme } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
-import ImagesContext from '../../context/imagesContext.js';
+import { ImagesContext } from '../../context/imagesContext.js';
 
 const SearchIconWrapper = styled('div')(({ theme }) => ({
 	padding: theme.spacing(0, 2),

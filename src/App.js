@@ -1,19 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import ImagesContext from './context/imagesContext.js';
+import { ImagesContextProvider } from './context/imagesContext.js';
 import AppLogo from './components/AppLogo/AppLogo.js';
 import Search from './components/Search/Search.js';
 import MasonryImageList from './components/MasonryImageList/MasonryImageList.js';
 import FormDialog from './components/FormDialog/FormDialog.js';
 
 export default function BasicGrid() {
-	const [images, setImages] = useState([]);
-	const [searchImageText, setSearchImageText] = useState('');
-	const value = { images, setImages, searchImageText, setSearchImageText };
-
 	return (
-		<ImagesContext.Provider value={value}>
+		<ImagesContextProvider>
 			<Box sx={{ flexGrow: 1 }}>
 				<Grid
 					container
@@ -36,6 +32,6 @@ export default function BasicGrid() {
 					</Grid>
 				</Grid>
 			</Box>
-		</ImagesContext.Provider>
+		</ImagesContextProvider>
 	);
 }

@@ -7,7 +7,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import { InputLabel } from '@mui/material';
 import AddPhotoButton from '../AddPhotoButton/AddPhotoButton';
-import ImagesContext from '../../context/imagesContext.js';
+import { ImagesContext } from '../../context/imagesContext.js';
 
 export default function FormDialog() {
 	const [open, setOpen] = useState(false);
