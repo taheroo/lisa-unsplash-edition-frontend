@@ -6,7 +6,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import { InputLabel } from '@mui/material';
-import AddPhotoButton from '../AddPhotoButton/AddPhotoButton';
+import AddPhotoButton from '../AddPhotoButton';
 import { ImagesContext } from '../../context/imagesContext.js';
 
 export default function FormDialog() {
