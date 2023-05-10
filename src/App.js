@@ -7,7 +7,7 @@ import Search from './components/Search/Search.js';
 import MasonryImageList from './components/MasonryImageList/MasonryImageList.js';
 import FormDialog from './components/FormDialog/FormDialog.js';
 
-export default function BasicGrid() {
+export default function App() {
 	return (
 		<ImagesContextProvider>
 			<Box sx={{ flexGrow: 1 }}>

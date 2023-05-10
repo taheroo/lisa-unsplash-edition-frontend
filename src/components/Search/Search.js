@@ -56,6 +56,7 @@ function Search() {
 					<SearchIcon />
 				</SearchIconWrapper>
 				<StyledInputBase
+					data-testid='searchInput'
 					placeholder='Search by name'
 					inputProps={{ 'aria-label': 'search' }}
 					onChange={handleSearchChange}

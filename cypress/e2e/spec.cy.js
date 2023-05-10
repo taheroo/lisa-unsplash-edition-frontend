@@ -1,6 +1,9 @@
 describe('Test Create/Read/Delete Images', () => {
-	it('Create Image', () => {
+	beforeEach(() => {
 		cy.visit('localhost:3000');
+	});
+
+	it('Create Image', () => {
 		cy.get('[data-testid="imageItem"]').should('have.length', 11);
 		cy.get('[data-testid="addPhotoButton"]').click();
 		cy.get('[data-testid="labelTextField"]').type('Candle');
@@ -10,11 +13,16 @@ describe('Test Create/Read/Delete Images', () => {
 		cy.get('[data-testid="submitFormDialog"]').click();
 		cy.get('[data-testid="imageItem"]').should('have.length', 12);
 	});
+
 	it('Delete Image', () => {
-		cy.visit('localhost:3000');
 		cy.get('[data-testid="imageItem"]').should('have.length', 11);
 		cy.get('[data-testid="deletePhotoButton#2"]').click();
 		cy.get('[data-testid="submitDeleteFormDialog"]').click();
 		cy.get('[data-testid="imageItem"]').should('have.length', 10);
+	});
+
+	it('Search Images', () => {
+		cy.get('[data-testid="searchInput"]').type('kitchen');
+		cy.get('[data-testid="imageItem"]').should('have.length', 1);
 	});
 });
