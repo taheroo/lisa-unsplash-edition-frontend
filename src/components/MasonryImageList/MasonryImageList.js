@@ -5,7 +5,6 @@ import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
 import IconButton from '@mui/material/IconButton';
-import Button from '@mui/material/Button';
 import ImagesContext from '../../context/imagesContext.js';
 import DeleteFormDialog from '../DeleteFormDialog/DeleteFormDialog.js';
 
@@ -66,6 +65,7 @@ function MasonryImageList() {
 									position='top'
 									actionIcon={
 										<IconButton
+											data-testid={`deletePhotoButton#${index}`}
 											sx={{ color: 'rgba(255, 255, 255, 0.54)' }}
 											aria-label={`delete ${item.title}`}
 											onClick={() => handleClickOpen(index)}

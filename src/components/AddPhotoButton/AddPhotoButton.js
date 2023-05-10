@@ -12,7 +12,7 @@ function AddPhotoButton({ onClick }) {
 			}}
 		>
 			<Button
-			data-testid='addPhotoButton'
+				data-testid='addPhotoButton'
 				onClick={onClick}
 				variant='contained'
 				style={{
