@@ -8,33 +8,34 @@ import MasonryImageList from './components/MasonryImageList/MasonryImageList.js'
 import FormDialog from './components/FormDialog/FormDialog.js';
 
 export default function BasicGrid() {
-  const [images, setImages] = useState();
-  const value = { images, setImages };
+	const [images, setImages] = useState([]);
+	const [searchImageText, setSearchImageText] = useState('');
+	const value = { images, setImages, searchImageText, setSearchImageText };
 
-  return (
-    <ImagesContext.Provider value={value}>
-      <Box sx={{ flexGrow: 1 }}>
-        <Grid
-          container
-          spacing={0}
-          style={{ paddingLeft: 100, paddingRight: 100, paddingTop: 32 }}
-        >
-          <Grid item container xs={12} style={{ paddingBottom: 75 }}>
-            <Grid item xs={12} md={1}>
-              <AppLogo />
-            </Grid>
-            <Grid item xs={12} md={10}>
-              <Search />
-            </Grid>
-            <Grid item xs={12} md={1}>
-              <FormDialog />
-            </Grid>
-          </Grid>
-          <Grid item xs={12}>
-            <MasonryImageList />
-          </Grid>
-        </Grid>
-      </Box>
-    </ImagesContext.Provider>
-  );
+	return (
+		<ImagesContext.Provider value={value}>
+			<Box sx={{ flexGrow: 1 }}>
+				<Grid
+					container
+					spacing={0}
+					style={{ paddingLeft: 100, paddingRight: 100, paddingTop: 32 }}
+				>
+					<Grid item container xs={12} style={{ paddingBottom: 75 }}>
+						<Grid item xs={12} md={1}>
+							<AppLogo />
+						</Grid>
+						<Grid item xs={12} md={10}>
+							<Search />
+						</Grid>
+						<Grid item xs={12} md={1}>
+							<FormDialog />
+						</Grid>
+					</Grid>
+					<Grid item xs={12}>
+						<MasonryImageList />
+					</Grid>
+				</Grid>
+			</Box>
+		</ImagesContext.Provider>
+	);
 }

@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { styled, useTheme } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
+import ImagesContext from '../../context/imagesContext.js';
 
 const SearchIconWrapper = styled('div')(({ theme }) => ({
 	padding: theme.spacing(0, 2),
@@ -27,6 +28,12 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 function Search() {
 	const theme = useTheme();
+	const { setSearchImageText } = useContext(ImagesContext);
+
+	const handleSearchChange = (event) => {
+		setSearchImageText(event.target.value);
+	};
+
 	return (
 		<div
 			style={{
@@ -51,6 +58,7 @@ function Search() {
 				<StyledInputBase
 					placeholder='Search by name'
 					inputProps={{ 'aria-label': 'search' }}
+					onChange={handleSearchChange}
 				/>
 			</div>
 		</div>
