@@ -5,7 +5,15 @@ const ImagesContext = createContext();
 function ImagesContextProvider({ children }) {
 	const [images, setImages] = useState([]);
 	const [searchImageText, setSearchImageText] = useState('');
-	const value = { images, setImages, searchImageText, setSearchImageText };
+	const [isAuthorized, setAuthorized] = useState(false);
+	const value = {
+		images,
+		setImages,
+		searchImageText,
+		setSearchImageText,
+		isAuthorized,
+		setAuthorized,
+	};
 
 	return (
 		<ImagesContext.Provider value={value}>{children}</ImagesContext.Provider>
