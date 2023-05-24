@@ -9,6 +9,7 @@ import { InputLabel } from '@mui/material';
 import AddPhotoButton from '../AddPhotoButton';
 import { ImagesContext } from '../../context/imagesContext.js';
 import { styles } from './styles.js';
+import { createImage } from '../../services/images.js';
 
 export default function FormDialog() {
 	const [open, setOpen] = useState(false);
@@ -26,12 +27,19 @@ export default function FormDialog() {
 
 	const handleSubmit = () => {
 		handleAddImage();
-		handleClose();
 	};
 
 	const handleAddImage = () => {
-		const newImage = { img: imageUrl, title: title };
-		setImages([...images, newImage]);
+		const newImage = { imageUrl: imageUrl, label: title };
+		createImage(newImage)
+			.then((response) => {
+				if (response.success) {
+					const createdImage = response.data.image;
+					setImages([...images, createdImage]);
+					handleClose();
+				}
+			})
+			.catch((error) => {});
 	};
 
 	return (

@@ -6,10 +6,12 @@ import AppLogo from './components/AppLogo';
 import Search from './components/Search';
 import MasonryImageList from './components/MasonryImageList';
 import FormDialog from './components/FormDialog';
+import Login from './components/Login';
 
 export default function App() {
 	return (
 		<ImagesContextProvider>
+			<Login />
 			<Box sx={{ flexGrow: 1 }}>
 				<Grid
 					container

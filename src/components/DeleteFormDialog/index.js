@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
@@ -8,15 +8,31 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { InputLabel } from '@mui/material';
 import { ImagesContext } from '../../context/imagesContext.js';
 import { styles } from './styles.js';
+import { deleteImage } from '../../services/images.js';
 
 export default function DeleteFormDialog({
 	open = false,
 	handleClose,
-	imageIndex,
+	selectedImage,
 }) {
 	const { images, setImages } = useContext(ImagesContext);
+	const [password, setPassword] = useState('');
+	const [authenticationError, setAuthenticationError] = useState('');
+
 	const handleRemoveImage = (indexToRemove) => {
-		setImages(images.filter((image, index) => index !== indexToRemove));
+		deleteImage(selectedImage.imageId, password)
+			.then((response) => {
+				if (response.success) {
+					setImages(images.filter((image, index) => index !== indexToRemove));
+					handleClose();
+				} else {
+					setAuthenticationError(response.error);
+				}
+			})
+			.catch((error) => {});
+	};
+	const handlePasswordChange = (event) => {
+		setPassword(event.target.value);
 	};
 	return (
 		<div>
@@ -42,6 +58,9 @@ export default function DeleteFormDialog({
 						fullWidth
 						variant='standard'
 						placeholder='Type Password'
+						onChange={handlePasswordChange}
+						error={!!authenticationError}
+						helperText={authenticationError}
 						InputProps={{
 							disableUnderline: true,
 						}}
@@ -55,8 +74,7 @@ export default function DeleteFormDialog({
 					<Button
 						data-testid='submitDeleteFormDialog'
 						onClick={() => {
-							handleRemoveImage(imageIndex);
-							handleClose();
+							handleRemoveImage(selectedImage.index);
 						}}
 						style={styles.deleteButtonStyle}
 					>
